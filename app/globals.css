@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050509;
+  color: #e4e4e7;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.45);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #050509;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d1b31;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #322e55;
+}
+
+/* Film-grain overlay for the cinematic feel — pure CSS, zero runtime cost. */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.bg-grid-faint {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Holographic chips rendered by drei <Html> inside the 3D hero scene. */
+.orbit-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(9, 9, 17, 0.6);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+.orbit-label > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
