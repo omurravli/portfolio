@@ -1,55 +1,52 @@
-# Ömür Ravlı — Engineering Core
+# Ömür Ravlı
 
-A cinematic 3D portfolio built around a procedural "engineering core": a React Three Fiber reactor orb with orbit rings, data streams, particles, mouse-reactive lighting and floating discipline labels — framing work across AI, robotics, mobile, IoT, drones and web systems.
+**Multidisciplinary Engineer & Developer**
+Mechanical Engineering @ Abdullah Gül University · Kayseri, Türkiye
 
-## Stack
+> I build where software meets machines.
 
-Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion · React Three Fiber · Drei · Three.js
+I'm a mechanical engineering student who refuses to stay in one lane. I move between mobile apps, embedded hardware, drones, machine learning, optimization and the web — because the problems I find most interesting don't respect the line between code and the physical world. Mechanics, materials and CAD are the systems-thinking foundation sitting under everything I build.
 
-## Run it
+## What I build
 
-```bash
-npm install
-npm run dev
-```
+- **Mobile** — Flutter apps designed to survive a real semester, not a demo.
+- **Embedded / IoT** — ESP32 + MQTT product loops with real screens, sensors and status logic.
+- **Robotics / Drones** — student drone-team work where a bad assumption ends in a crash.
+- **ML & Optimization** — OCR pipelines and OR-Tools CP-SAT scheduling: software that decides, not just displays.
+- **Web & Commerce** — production Shopify / ikas storefront themes shipped to live stores.
+- **Teaching** — programming and math for beginners through Python, Scratch, Roblox Studio and Lua.
 
-Open http://localhost:3000. Production build: `npm run build && npm start`.
+## Selected work
 
-## Customize
+| Project | What it is | Stack |
+| --- | --- | --- |
+| **Skincare Analyzer** | Flutter app that scans skincare labels with OCR and matches every ingredient against a 247-item safety library | Flutter · Firebase · OCR |
+| **StudIQ** | Study & focus planner on a feature-based architecture, built to survive a real semester | Flutter · Dart |
+| **Café Table Ordering** | ESP32 IoT prototype: QR order flow, MQTT state sync, TFT + RGB status from "waiting" to "ready" | ESP32 · MQTT · C++ |
+| **Sidus Drone Systems** | Student drone team — airframe, electronics and control integrated into one machine that has to fly | Drones · Embedded |
+| **OR-Tools Scheduler** | CP-SAT production scheduling across workers, machines and constraints | Python · OR-Tools |
+| **E-commerce Themes** | Responsive Shopify / ikas storefronts and theme work shipped to live stores | Shopify · JS · CSS |
 
-Everything content-related lives in **`lib/data.ts`**:
+## Toolbox
 
-- `profile` — name, location, **email / GitHub / LinkedIn links** (the contact section and the mailto form read from here; replace `hello@example.com` with your real address).
-- `stats` — the animated hero counters. Set the values to your real counts.
-- `projects` — title, system label, status, description, stack chips, accent color, `featured` flag (featured spans two columns).
-- `skillCategories` — the eight sectors of the tech galaxy.
-- `timeline` — the signal-path phases.
-- `processStages` — the pipeline stages.
+- **Languages** — Python · TypeScript / JavaScript · Dart · C++ · Java · MATLAB · Lua
+- **Mobile & Web** — Flutter · React · Next.js · Tailwind CSS · Firebase / Firestore
+- **Embedded & Robotics** — ESP32 · Arduino · MQTT · PlatformIO · sensors · drone systems
+- **ML & Optimization** — machine learning · OCR workflows · OR-Tools CP-SAT
+- **Engineering & CAD** — SolidWorks · AutoCAD · mechanical systems
+- **Game Dev** — Unity · Godot · Roblox Studio
 
-Visual identity:
+## How I work
 
-- Colors: `tailwind.config.ts` (`void`, `ink`, `neon.*`).
-- 3D scene: `components/three/CoreAssembly.tsx` — orbit labels (`LABELS`), ring config (`RINGS`), stream count, core materials.
-- Fonts: `app/layout.tsx` (Space Grotesk / Inter / JetBrains Mono via `next/font`).
+**Idea → System Design → Prototype → Test → Iterate → Ship.**
+Find the friction worth solving, build the ugliest working version fast, break it before reality does, cut what's dead, and put it in real hands.
 
-## Deploy on Vercel
+## Reach me
 
-1. Push the repo to GitHub.
-2. Go to [vercel.com/new](https://vercel.com/new), import the repo — Next.js is auto-detected, no config needed.
-3. Deploy. Every push to `main` redeploys automatically.
+- **Email** — [omurravli04@gmail.com](mailto:omurravli04@gmail.com)
+- **GitHub** — [@omurravli](https://github.com/omurravli)
+- **LinkedIn** — [in/omurravli](https://linkedin.com/in/omurravli/)
 
-(CLI alternative: `npx vercel`.)
+---
 
-## Improve next
-
-- Real form backend (Resend / Formspree) instead of `mailto:`.
-- Bloom post-processing (`@react-three/postprocessing`) for a richer core glow — test mobile perf first.
-- Per-project detail pages or case-study modals.
-- OG image (`app/opengraph-image.tsx`) and sitemap/robots for SEO.
-- Scroll-linked camera moves so the core "hands off" into the mission section.
-
-## Accessibility & performance notes
-
-- `prefers-reduced-motion` disables camera parallax, idle animations, counters and CSS spins; the WebGL canvas drops to on-demand rendering.
-- The 3D scene uses only procedural geometry (~750 particles, 3 torus rings, dashed line curves) — no model files, DPR capped at 1.75.
-- The scene is client-only (`next/dynamic`, `ssr: false`) so the page shell renders instantly.
+*This repository is the source of my portfolio site — Next.js · React Three Fiber · Three.js.*
