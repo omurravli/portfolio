@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
+import GitHubStats from "@/components/sections/GitHubStats";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { timeline } from "@/lib/data";
 
@@ -103,6 +104,8 @@ export default function Timeline() {
             })}
           </div>
         </div>
+
+        <GitHubStats />
       </div>
     </section>
   );

@@ -234,3 +234,119 @@ export const processStages: ProcessStage[] = [
   { id: "iterate", title: "Iterate", blurb: "Tighten tolerances, cut what's dead." },
   { id: "ship", title: "Ship", blurb: "Put it in real hands." },
 ];
+
+// GitHub activity block in the experience section.
+// `GitHubStats.tsx` fetches these numbers live in the browser on load; the
+// `snapshot` below is the real data captured 2026-07-03, used for the instant
+// first paint and as a fallback whenever the GitHub API is unavailable.
+export const github = {
+  username: "omurravli",
+  url: "https://github.com/omurravli",
+  snapshot: {
+    repos: 11,
+    followers: 7,
+    following: 12,
+    contributions: 50,
+    // Most-used languages across public repos (by repository).
+    languages: [
+      { name: "Python", pct: 62 },
+      { name: "TypeScript", pct: 13 },
+      { name: "Dart", pct: 13 },
+      { name: "HTML", pct: 12 },
+    ],
+    // Contribution calendar: one digit (intensity level 0–4) per day,
+    // oldest → newest, starting on the Sunday below.
+    contributionStart: "2025-06-29",
+    contributionDays:
+      "0000000000000000000000000000000000000000000004000000000000000040010020000000000000000000000000000000000000000000041000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003124000000000000000000000000000000000000000000000300000000000000000000100000000000000000000000000100000000000000000000000000000000000000000000040000000001024",
+  },
+};
+
+export interface RepoProject {
+  name: string;
+  fullName: string;
+  description: string;
+  url: string;
+  stars: number;
+  forks: number;
+  issues: number;
+  pushedAt: string; // YYYY-MM-DD
+  languages: string[];
+}
+
+// The projects section is fetched live from GitHub (see
+// components/sections/Projects.tsx): newest public non-fork repos with a
+// description or language. This snapshot (captured 2026-07-03) is the instant
+// first paint + the fallback whenever GitHub's API is unavailable.
+export const githubProjects = {
+  username: "omurravli",
+  count: 6,
+  snapshot: [
+    {
+      name: "portfolio",
+      fullName: "omurravli/portfolio",
+      description: "Portfolio",
+      url: "https://github.com/omurravli/portfolio",
+      stars: 0,
+      forks: 0,
+      issues: 0,
+      pushedAt: "2026-07-03",
+      languages: ["TypeScript", "CSS", "JavaScript"],
+    },
+    {
+      name: "akce_pay",
+      fullName: "omurravli/akce_pay",
+      description: "",
+      url: "https://github.com/omurravli/akce_pay",
+      stars: 0,
+      forks: 1,
+      issues: 0,
+      pushedAt: "2026-05-31",
+      languages: ["Dart", "JavaScript", "C++", "CMake"],
+    },
+    {
+      name: "coni",
+      fullName: "omurravli/coni",
+      description: "Basic voice asistant",
+      url: "https://github.com/omurravli/coni",
+      stars: 1,
+      forks: 0,
+      issues: 0,
+      pushedAt: "2026-01-31",
+      languages: ["Python", "Shell"],
+    },
+    {
+      name: "freecodecampfullstackdev",
+      fullName: "omurravli/freecodecampfullstackdev",
+      description: "I am commiting freeCodeCamp's workshop files.",
+      url: "https://github.com/omurravli/freecodecampfullstackdev",
+      stars: 0,
+      forks: 0,
+      issues: 0,
+      pushedAt: "2025-10-27",
+      languages: ["HTML"],
+    },
+    {
+      name: "minecraft-clone",
+      fullName: "omurravli/minecraft-clone",
+      description: "basic clone of minecraft with python",
+      url: "https://github.com/omurravli/minecraft-clone",
+      stars: 0,
+      forks: 0,
+      issues: 0,
+      pushedAt: "2025-09-05",
+      languages: ["Python"],
+    },
+    {
+      name: "password_generator",
+      fullName: "omurravli/password_generator",
+      description: "",
+      url: "https://github.com/omurravli/password_generator",
+      stars: 0,
+      forks: 0,
+      issues: 0,
+      pushedAt: "2025-08-13",
+      languages: ["Python"],
+    },
+  ] as RepoProject[],
+};
