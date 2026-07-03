@@ -2,9 +2,9 @@
 
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useContent } from "@/components/ContentProvider";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { skillCategories } from "@/lib/data";
 
 const chipVariants: Variants = {
   hidden: { opacity: 0, scale: 0.4 },
@@ -16,6 +16,7 @@ const chipVariants: Variants = {
 };
 
 export default function TechGalaxy() {
+  const { skillCategories } = useContent();
   const reduce = !!useReducedMotion();
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(true);

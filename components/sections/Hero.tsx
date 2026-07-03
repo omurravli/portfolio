@@ -2,9 +2,9 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import dynamic from "next/dynamic";
+import { useContent } from "@/components/ContentProvider";
 import MagneticButton from "@/components/ui/MagneticButton";
 import StatCounter from "@/components/ui/StatCounter";
-import { stats } from "@/lib/data";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
@@ -20,6 +20,8 @@ const container: Variants = {
 
 export default function Hero() {
   const reduce = !!useReducedMotion();
+  const { stats, profile } = useContent();
+  const hero = profile.hero;
 
   const item: Variants = reduce
     ? {
@@ -64,7 +66,7 @@ export default function Hero() {
             <motion.div variants={item}>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-[10px] tracking-[0.22em] text-zinc-300 backdrop-blur">
                 <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-emerald-400" />
-                SYSTEMS ONLINE — KAYSERI, TÜRKİYE
+                {hero.badge}
               </span>
             </motion.div>
 
@@ -72,9 +74,9 @@ export default function Hero() {
               variants={item}
               className="mt-7 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
             >
-              Ömür Ravlı builds where{" "}
+              {hero.headingLead}{" "}
               <span className="bg-gradient-to-r from-[#c9b8ff] via-[#a78bfa] to-[#5fe6fb] bg-clip-text text-transparent [filter:drop-shadow(0_1px_2px_rgba(5,5,9,0.9))_drop-shadow(0_0_22px_rgba(124,92,246,0.22))]">
-                software meets machines
+                {hero.headingAccent}
               </span>
               .
             </motion.h1>
@@ -83,9 +85,7 @@ export default function Hero() {
               variants={item}
               className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 md:text-lg"
             >
-              Mechanical engineering student and multidisciplinary developer
-              creating mobile apps, IoT systems, ML workflows, drone projects,
-              optimization tools, and modern web experiences.
+              {hero.subtitle}
             </motion.p>
 
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">

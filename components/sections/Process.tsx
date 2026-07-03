@@ -1,19 +1,21 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useContent } from "@/components/ContentProvider";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { processStages } from "@/lib/data";
 
-const ICONS: Record<string, JSX.Element> = {
-  idea: (
+// Indexed by pipeline position so it works whether stages come from the API or
+// the bundled fallback. Extra stages fall back to the last icon.
+const ICONS: JSX.Element[] = [
+  (
     <>
       <path d="M9 18h6" />
       <path d="M10 21h4" />
       <path d="M12 3a6 6 0 0 0-3.9 10.6c.6.5.9 1.2.9 2V16h6v-.4c0-.8.3-1.5.9-2A6 6 0 0 0 12 3z" />
     </>
   ),
-  design: (
+  (
     <>
       <rect x="3" y="3" width="7" height="7" rx="1" />
       <rect x="14" y="14" width="7" height="7" rx="1" />
@@ -21,35 +23,36 @@ const ICONS: Record<string, JSX.Element> = {
       <circle cx="6.5" cy="17.5" r="2.5" />
     </>
   ),
-  prototype: (
+  (
     <>
       <rect x="7" y="7" width="10" height="10" rx="1.5" />
       <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" />
     </>
   ),
-  test: (
+  (
     <>
       <path d="M5.5 19a8.5 8.5 0 1 1 13 0" />
       <path d="M12 15l3.5-5" />
       <circle cx="12" cy="15" r="1.5" />
     </>
   ),
-  iterate: (
+  (
     <>
       <path d="M21 12a9 9 0 1 1-2.64-6.36" />
       <path d="M21 3v5h-5" />
     </>
   ),
-  ship: (
+  (
     <>
       <path d="M12 2c3 2.5 4.5 6 4.5 9.5L14 14h-4l-2.5-2.5C7.5 8 9 4.5 12 2z" />
       <circle cx="12" cy="8.5" r="1.5" />
       <path d="M9 14l-2.5 5L10 17M15 14l2.5 5L14 17" />
     </>
   ),
-};
+];
 
 export default function Process() {
+  const { processStages } = useContent();
   const reduce = !!useReducedMotion();
 
   return (
@@ -97,7 +100,7 @@ export default function Process() {
                       strokeLinejoin="round"
                       className="h-7 w-7"
                     >
-                      {ICONS[stage.id]}
+                      {ICONS[i] ?? ICONS[ICONS.length - 1]}
                     </svg>
                     <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-void font-mono text-[9px] text-neon-purple">
                       {i + 1}
