@@ -4,6 +4,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Clip horizontal overflow at the root. body's overflow-x alone doesn't
+     stop the scroll because <html> is the scroll container — decorative
+     off-canvas blur blobs otherwise add ~80px of pannable width on mobile,
+     which lets the page rest scrolled-right and clips the content's left edge. */
+  overflow-x: hidden;
 }
 
 body {
