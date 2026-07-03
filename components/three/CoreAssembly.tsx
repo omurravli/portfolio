@@ -274,9 +274,10 @@ function BobGroup({
 
 export default function CoreAssembly({ reducedMotion }: MotionProps) {
   const { viewport } = useThree();
-  // Shift the core to the right of the hero copy on wide screens,
-  // center + shrink it behind the copy on small ones.
-  const offsetX = viewport.width > 8.4 ? Math.min(viewport.width * 0.16, 1.9) : 0;
+  // On wide screens the core sits to the right of the hero copy; on narrow
+  // ones it centers behind the copy.
+  const isWide = viewport.width > 8.4;
+  const offsetX = isWide ? Math.min(viewport.width * 0.16, 1.9) : 0;
   const scale = THREE.MathUtils.clamp(viewport.width / 10.5, 0.55, 1);
 
   return (
@@ -285,7 +286,9 @@ export default function CoreAssembly({ reducedMotion }: MotionProps) {
         <EngineeringCore reducedMotion={reducedMotion} />
         <OrbitRings reducedMotion={reducedMotion} />
         <DataStreams reducedMotion={reducedMotion} />
-        <OrbitLabels reducedMotion={reducedMotion} />
+        {/* The orbit labels drift over the headline once the core is centered
+            behind the copy, so only show them on the wide layout. */}
+        {isWide && <OrbitLabels reducedMotion={reducedMotion} />}
         <Sparkles count={55} scale={5.5} size={2} speed={reducedMotion ? 0 : 0.35} color="#a78bfa" opacity={0.55} />
       </BobGroup>
       <MouseLight reducedMotion={reducedMotion} />
