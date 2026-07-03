@@ -46,7 +46,7 @@ export default function Hero() {
       {/* readability scrims — transparent over the core, dense over the copy */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-r from-void/85 via-void/40 to-void/10 md:from-void/70 md:via-transparent md:to-transparent"
+        className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-r from-void/90 via-void/45 to-void/10 md:from-void/80 md:via-void/25 md:to-transparent"
       />
       <div
         aria-hidden
@@ -73,7 +73,7 @@ export default function Hero() {
               className="mt-7 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
             >
               Ömür Ravlı builds where{" "}
-              <span className="bg-gradient-to-r from-neon-violet via-neon-purple to-neon-cyan bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#c9b8ff] via-[#a78bfa] to-[#5fe6fb] bg-clip-text text-transparent [filter:drop-shadow(0_1px_2px_rgba(5,5,9,0.9))_drop-shadow(0_0_22px_rgba(124,92,246,0.22))]">
                 software meets machines
               </span>
               .
