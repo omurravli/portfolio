@@ -88,8 +88,9 @@ export async function getContent(): Promise<Content> {
   const base = process.env.CONTENT_API_URL;
   if (!base) return fallbackContent;
   try {
+    // no-store: always fetch the latest so admin edits are reflected in real time.
     const res = await fetch(`${base.replace(/\/$/, "")}/api/content/`, {
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
     if (!res.ok) return fallbackContent;
     const d = await res.json();

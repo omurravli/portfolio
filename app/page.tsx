@@ -10,8 +10,8 @@ import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
 import { getContent } from "@/lib/content";
 
-// Re-fetch editable content from the backend at most once a minute (ISR).
-export const revalidate = 60;
+// Render on every request so admin edits show up immediately (no cache delay).
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const content = await getContent();
