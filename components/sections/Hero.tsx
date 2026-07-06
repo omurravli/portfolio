@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { useContent } from "@/components/ContentProvider";
 import MagneticButton from "@/components/ui/MagneticButton";
 import StatCounter from "@/components/ui/StatCounter";
+import SceneErrorBoundary from "@/components/three/SceneErrorBoundary";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
@@ -12,6 +13,10 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
     <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_65%_45%,rgba(139,92,246,0.12),transparent_70%)]" />
   ),
 });
+
+const heroSceneFallback = (
+  <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_65%_45%,rgba(139,92,246,0.12),transparent_70%)]" />
+);
 
 const container: Variants = {
   hidden: {},
@@ -42,7 +47,9 @@ export default function Hero() {
     <section id="top" className="relative flex min-h-screen flex-col overflow-hidden">
       {/* 3D engineering core */}
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-        <HeroScene reducedMotion={reduce} />
+        <SceneErrorBoundary fallback={heroSceneFallback}>
+          <HeroScene reducedMotion={reduce} />
+        </SceneErrorBoundary>
       </div>
 
       {/* readability scrims — transparent over the core, dense over the copy */}
